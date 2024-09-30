@@ -23,6 +23,13 @@ android {
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
     }
+    buildTypes.forEach {
+        it.buildConfigField("String", "API_KEY", "\"test_key\"")
+    }
+    buildFeatures {
+        buildConfig = true
+        viewBinding = true
+    }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
@@ -41,8 +48,10 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1")
-    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.5.1")
+    implementation("androidx.fragment:fragment-ktx:1.8.3")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.6")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.8.6")
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.8.6")
 
     implementation(libs.okhttp)
     implementation(libs.okhttp.logging)
